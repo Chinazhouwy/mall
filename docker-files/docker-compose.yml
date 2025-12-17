@@ -1,0 +1,43 @@
+# 指定 Compose 文件的版本（推荐使用 3.8，兼容大部分 Docker 版本）
+version: '3.8'
+
+# 定义服务（每个服务对应一个容器）
+services:
+  # MySQL 服务（名称可自定义，这里用 mysql01 对应原有容器名）
+  mysql01:
+    # 镜像名称和版本
+    image: mysql:5.7
+    # 容器名称（和原有 --name 一致）
+    container_name: mysql01
+    # 端口映射（宿主机:容器内，对应原有 -p 3306:3306）
+    ports:
+      - "3306:3306"
+    # 数据卷挂载（对应原有 -v 参数）
+    volumes:
+      - ../data/mydata/mysql/log:/var/log/mysql
+      - ../data/mydata/mysql/data:/var/lib/mysql
+      - ../data/mydata/mysql/conf/my.cnf:/etc/mysql/conf.d/my.cnf
+    # 环境变量（对应原有 -e MYSQL_ROOT_PASSWORD=root）
+    environment:
+      # MySQL 根密码
+      MYSQL_ROOT_PASSWORD: root
+    # 重启策略：容器退出时自动重启（可选，增强稳定性）
+    restart: always
+
+  # Redis 服务（名称用 redis 对应原有容器名）
+  redis:
+    # 镜像名称（默认拉取最新版，对应原有 docker pull redis）
+    image: redis
+    # 容器名称
+    container_name: redis
+    # 端口映射（对应原有 -p 6379:6379）
+    ports:
+      - "6379:6379"
+    # 数据卷挂载
+    volumes:
+      - ../data/mydata/redis/data:/data
+      - ../data/mydata/redis/conf/redis.conf:/etc/redis/redis.conf
+    # 容器启动命令（对应原有 redis-server /etc/redis/redis.conf）
+    command: redis-server /etc/redis/redis.conf
+    # 重启策略
+    restart: always
