@@ -1,3 +1,5 @@
+use mall_wms;
+
 drop table if exists wms_purchase;
 
 drop table if exists wms_purchase_detail;

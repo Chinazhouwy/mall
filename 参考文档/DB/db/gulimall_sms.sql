@@ -1,3 +1,5 @@
+use mall_sms;
+
 drop table if exists sms_coupon;
 
 drop table if exists sms_coupon_history;

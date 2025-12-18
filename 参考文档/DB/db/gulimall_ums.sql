@@ -1,3 +1,5 @@
+use mall_ums;
+
 drop table if exists ums_growth_change_history;
 
 drop table if exists ums_integration_change_history;
