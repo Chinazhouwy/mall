@@ -19,12 +19,14 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>mall-common</module>
         <module>mall-product</module>
         <module>mall-order</module>
         <module>mall-ware</module>
         <module>mall-member</module>
         <module>mall-coupon</module>
-        <module>renren-fast</module>
     </modules>
 
 
