@@ -17,3 +17,18 @@ New-Item ./mydata/mysql/conf/my.cnf -ItemType File
 
 
 renrenfastVue 的 node 版本，最新版本是 14.21.3
+
+# 需要把common提前到开始，否则一直编译不过
+
+```xml
+  <modules>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>mall-common</module>
+        <module>mall-product</module>
+        <module>mall-order</module>
+        <module>mall-ware</module>
+        <module>mall-member</module>
+        <module>mall-coupon</module>
+    </modules>
+```
