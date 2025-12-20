@@ -32,3 +32,14 @@ renrenfastVue 的 node 版本，最新版本是 14.21.3
         <module>mall-coupon</module>
     </modules>
 ```
+
+
+Caused by: javax.net.ssl.SSLHandshakeException: No appropriate protocol (protocol is disabled or cipher suites are inappropriate)
+
+```
+# 禁用 SSL（推荐用于开发环境）
+spring.datasource.url=jdbc:mysql://localhost:3306/your_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+
+# 或启用 SSL 并指定协议版本（推荐用于生产环境）
+spring.datasource.url=jdbc:mysql://localhost:3306/your_database?useSSL=true&enabledTLSProtocols=TLSv1.2&serverTimezone=UTC
+```
