@@ -6,9 +6,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.wy.mall</groupId>
-        <artifactId>mall</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.6</version>
     </parent>
 
     <groupId>com.wy.mall</groupId>
@@ -24,52 +24,12 @@
     </properties>
 
     <dependencies>
-        <!--服务注册发现-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash;配置中心&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash;feign&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
-<!--        </dependency>-->
-        <!--        &lt;!&ndash;seata 分布式事务 seata-all使用0.9【所以启动 事务协调者0.9版本的】&ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.alibaba.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>-->
-        <!--            <exclusions>-->
-        <!--                <exclusion>-->
-        <!--                    <groupId>io.seata</groupId>-->
-        <!--                    <artifactId>seata-all</artifactId>-->
-        <!--                </exclusion>-->
-        <!--            </exclusions>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>io.seata</groupId>-->
-        <!--            <artifactId>seata-all</artifactId>-->
-        <!--            <version>0.9.0</version>-->
-        <!--        </dependency>-->
-        <!--sentinel：熔断、降级、限流-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
-<!--        </dependency>-->
-        <!--        &lt;!&ndash;sleuth链路追踪&ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
-        <!--        </dependency>-->
-        <!--zipkin链路追踪可视化，内部依赖了sleuth，所以无需再依赖sleuth-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-zipkin</artifactId>-->
-<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!--mybatisplus-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -107,6 +67,16 @@
             <version>3.7</version>
         </dependency>
         <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
@@ -125,8 +95,8 @@
         <!--servlet-->
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version> <!-- 最后一个 javax 版本 -->
             <scope>provided</scope>
         </dependency>
         <!--HttpUtils需要的所有依赖-->
@@ -139,21 +109,6 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.2.1</version>
-        </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.httpcomponents</groupId>-->
-        <!--            <artifactId>httpcore</artifactId>-->
-        <!--            <version>4.2.1</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>commons-lang</groupId>-->
-        <!--            <artifactId>commons-lang</artifactId>-->
-        <!--            <version>2.6</version>-->
-        <!--        </dependency>-->
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-util</artifactId>
-            <version>9.3.7.v20160115</version>
         </dependency>
     </dependencies>
 
