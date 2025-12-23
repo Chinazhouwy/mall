@@ -17,3 +17,12 @@ buildNumber.properties
 **/mvnw.cmd
 
 data/
+/mall-common/.classpath
+/mall-product/.classpath
+/renren-generator/.classpath
+/mall-common/.factorypath
+/mall-product/.factorypath
+/mall-common/.project
+/mall-product/.project
+/renren-generator/.project
+/.project
