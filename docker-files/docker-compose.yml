@@ -41,3 +41,20 @@ services:
     command: redis-server /etc/redis/redis.conf
     # 重启策略
     restart: always
+
+  # 单机模式 + 外部 MySQL 数据库
+  nacos:
+    image: nacos/nacos-server:latest
+    container_name: nacos
+    env_file:
+      - ./nacos-docker/env/nacos-standalone-mysql.env
+    ports:
+      - "8080:8080"
+      - "8848:8848"
+      - "9848:9848"
+    volumes:
+      - ../data/mydata/nacos/logs:/home/nacos/logs
+      - ../data/mydata/nacos/data:/home/nacos/data
+    depends_on:
+      - mysql01
+    restart: always
