@@ -1,11 +1,24 @@
+server:
+  port: 8081
+
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mall_pms?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: root
-mybatis-plus:
-    mapper-locations: classpath*:mapper/**/*.xml
-    global-config:
-        db-config:
-            id-type: auto
+  application:
+    name: mall-product
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+  profiles:
+    active: dev
+  config:
+    import:
+      - nacos:mall-product.yaml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -43,3 +43,47 @@ spring.datasource.url=jdbc:mysql://localhost:3306/your_database?useSSL=false&all
 # 或启用 SSL 并指定协议版本（推荐用于生产环境）
 spring.datasource.url=jdbc:mysql://localhost:3306/your_database?useSSL=true&enabledTLSProtocols=TLSv1.2&serverTimezone=UTC
 ```
+
+
+
+
+# `bootstrap.properties` 移除时间及原因
+
+## 移除时间
+
+`bootstrap.properties` 在 **Spring Boot 2.4** 版本中被移除。
+
+## 移除原因
+
+### 1. **配置加载机制统一**
+- Spring Boot 2.4 引入了新的配置导入机制
+- 使用 `spring.config.import` 替代原有的 bootstrap 机制
+
+### 2. **配置优先级简化**
+- 原有的 bootstrap 配置具有最高优先级，容易造成配置混乱
+- 新机制通过明确的导入顺序来管理配置优先级
+
+### 3. **Cloud 配置集成改进**
+- Spring Cloud 配置中心通过 `spring.config.import` 实现更灵活的配置加载
+- 避免了 bootstrap 阶段的复杂性
+
+## 替代方案
+
+### 使用 `application.yml` 配置导入
+```yaml
+spring:
+  config:
+    import:
+      - nacos:mall-product.yaml
+```
+
+
+### 配置文件命名约定
+- `application-{profile}.properties/yml`
+- 通过 `spring.config.location` 指定配置位置
+
+## 对项目的影响
+
+- 你的项目使用了 `spring.config.import` 机制
+- 不需要 `bootstrap.properties` 文件
+- 配置加载更加直观和可控
