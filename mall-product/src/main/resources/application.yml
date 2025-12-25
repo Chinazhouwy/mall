@@ -16,9 +16,3 @@ spring:
   config:
     import:
       - nacos:mall-product.yaml
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
