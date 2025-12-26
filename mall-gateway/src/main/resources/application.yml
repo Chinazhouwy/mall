@@ -2,25 +2,11 @@ server:
   port: 88
 
 spring:
-  application:
-    name: mall-gateway
   cloud:
     nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
       config:
         server-addr: 127.0.0.1:8848
         file-extension: yaml
-    gateway:
-      routes:  # ✅ 正确：gateway在cloud下
-        - id: baidu_route
-          uri: https://www.baidu.com
-          predicates:
-            - Query=url,baidu
-        - id: qq_route
-          uri: https://www.qq.com
-          predicates:
-            - Query=url,qq
   profiles:
     active: dev
   config:

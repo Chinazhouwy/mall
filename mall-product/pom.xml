@@ -21,6 +21,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <mybatis-plus.version>3.5.9</mybatis-plus.version>
+        <spring-cloud.version>2025.0.1</spring-cloud.version>
+        <spring-cloud-alibaba.version>2025.0.0.0</spring-cloud-alibaba.version>
         <java.version>17</java.version>
     </properties>
 
@@ -29,14 +31,14 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2025.0.0.0</version>  <!-- 使用实际的预发布版本 -->
+                <version>${spring-cloud-alibaba.version}</version>  <!-- 使用实际的预发布版本 -->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2025.0.0</version>  <!-- 对应的Spring Cloud版本 -->
+                <version>${spring-cloud.version}</version>  <!-- 对应的Spring Cloud版本 -->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
