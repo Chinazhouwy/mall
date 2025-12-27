@@ -4,7 +4,10 @@ import java.util.Arrays;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.wy.mall.order.feign.ProductFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,9 +30,25 @@ import com.wy.common.utils.R;
  */
 @RestController
 @RequestMapping("order/order")
+@RefreshScope
 public class OrderController {
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    ProductFeignService productFeignService;
+
+    @Value("${testName}")
+    private String testName;
+
+
+    @RequestMapping("/product/list")
+    public R membercoupons(){    //全系统的所有返回都返回R
+        // 模拟去数据库查用户对于的优惠券
+        R orderProductList = productFeignService.orderProductList();
+        return R.ok().put("testName", testName).put("productList", orderProductList.get("productList"));
+    }
+
 
     /**
      * 列表

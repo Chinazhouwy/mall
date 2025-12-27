@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        # 配置刷新间隔（毫秒）
+        config-refresh-interval: 10000  # 增加到10秒
+        timeout: 10000  # 增加超时时间
+  profiles:
+    active: dev
+  config:
+    import:
+      - nacos:mall-order.yaml

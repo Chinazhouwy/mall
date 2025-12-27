@@ -31,6 +31,17 @@ public class AttrController {
     @Autowired
     private AttrService attrService;
 
+
+    /**
+     * 列表
+     */
+    @RequestMapping("/test/list")
+    public R list(){
+        return R.ok().put("productList", Arrays.asList("1", "2"));
+    }
+
+
+
     /**
      * 列表
      */
