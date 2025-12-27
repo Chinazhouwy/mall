@@ -87,3 +87,17 @@ spring:
 - 你的项目使用了 `spring.config.import` 机制
 - 不需要 `bootstrap.properties` 文件
 - 配置加载更加直观和可控
+
+### nacos 配置无法及时刷新问题
+- [ ] todo
+
+```text
+2025-12-27T13:56:25.067+08:00  WARN 77916 --- [mall-order] [block.monitor.0] c.a.nacos.client.config.impl.CacheData   : [Config-fixed-public-127.0.0.1_8848] [notify-block-monitor] dataId=mall-order.yaml, group=DEFAULT_GROUP,tenant=public, md5=671b1fb9a437bddd12f249f5c63c6725, receiveConfigInfo execute over 60000 mills，thread trace block : 
+	at java.base@17.0.17/java.lang.Throwable.fillInStackTrace(Native Method)
+	at java.base@17.0.17/java.lang.Throwable.fillInStackTrace(Throwable.java:798)
+	at java.base@17.0.17/java.lang.Throwable.<init>(Throwable.java:271)
+	at java.base@17.0.17/java.lang.Exception.<init>(Exception.java:67)
+	at java.base@17.0.17/java.lang.ReflectiveOperationException.<init>(ReflectiveOperationException.java:57)
+	at java.base@17.0.17/java.lang.NoSuchMethodException.<init>(NoSuchMethodException.java:50)
+	at ... 
+```
