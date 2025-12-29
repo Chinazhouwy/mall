@@ -1,0 +1,7 @@
+{
+    "editor.mouseWheelZoom": true,
+    "editor.columnSelection": true,
+    "editor.definitionLinkOpensInPeek": true,
+    "terminal.integrated.mouseWheelZoom": true,
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
