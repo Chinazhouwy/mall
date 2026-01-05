@@ -1,4 +1,4 @@
-package com.atguigu.mall.ai.config;
+package com.wy.mall.ai.config;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.openai.OpenAiChatModel;
@@ -10,11 +10,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * AI客户端配置类
+ * Spring AI配置类
  */
 @Configuration
 @RefreshScope
-public class AiClientConfig {
+public class AiConfig {
 
     // DeepSeek配置
     @Value("${spring.ai.deepseek.api-key}")
@@ -25,20 +25,7 @@ public class AiClientConfig {
 
     @Value("${spring.ai.deepseek.chat.model}")
     private String deepseekModel;
-    
-    // 阿里千问配置
-    @Value("${spring.ai.qwen.api-key}")
-    private String qwenApiKey;
-    
-    @Value("${spring.ai.qwen.base-url}")
-    private String qwenBaseUrl;
-    
-    @Value("${spring.ai.qwen.chat.model}")
-    private String qwenModel;
-    
-    /**
-     * 创建DeepSeek客户端
-     */
+
     @Bean("deepseekChatClient")
     public ChatClient deepseekChatClient() {
         OpenAiApi openAiApi = new OpenAiApi(deepseekBaseUrl, deepseekApiKey);
@@ -48,17 +35,31 @@ public class AiClientConfig {
         OpenAiChatModel chatModel = new OpenAiChatModel(openAiApi, options);
         return ChatClient.builder(chatModel).build();
     }
-    
+
+
     /**
-     * 创建阿里千问客户端
+     * 配置OpenAI API客户端
      */
-    @Bean("qwenChatClient")
-    public ChatClient qwenChatClient() {
-        OpenAiApi openAiApi = new OpenAiApi(qwenBaseUrl, qwenApiKey);
-        OpenAiChatOptions options = OpenAiChatOptions.builder()
-                .withModel(qwenModel)
+    @Bean
+    public OpenAiApi openAiApi() {
+        return new OpenAiApi(deepseekApiKey, deepseekBaseUrl);
+    }
+
+    /**
+     * 配置OpenAI聊天模型
+     */
+    @Bean
+    public OpenAiChatModel openAiChatModel(OpenAiApi openAiApi) {
+        return new OpenAiChatModel(openAiApi);
+    }
+
+    /**
+     * 配置聊天客户端
+     */
+    @Bean
+    public ChatClient chatClient(OpenAiChatModel openAiChatModel) {
+        return ChatClient.builder(openAiChatModel)
+                .defaultSystem("你是一个智能助手，帮助用户解决各种问题")
                 .build();
-        OpenAiChatModel chatModel = new OpenAiChatModel(openAiApi, options);
-        return ChatClient.builder(chatModel).build();
     }
 }

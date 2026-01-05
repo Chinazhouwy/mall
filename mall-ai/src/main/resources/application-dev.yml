@@ -1,0 +1,36 @@
+# 开发环境配置
+spring:
+  ai:
+    openai:
+      # OpenAI API密钥，实际使用时从Nacos配置中心获取
+      api-key: ${OPENAI_API_KEY:your-api-key-here}
+      # API基础URL，支持代理配置
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com/v1}
+      # 聊天模型配置
+      chat:
+        # 默认模型
+        model: gpt-3.5-turbo
+        # 默认温度
+        temperature: 0.7
+        # 默认最大令牌数
+        max-tokens: 1024
+        # 默认topP值
+        top-p: 1.0
+
+# 日志配置
+logging:
+  level:
+    # 设置Spring AI的日志级别
+    org.springframework.ai: INFO
+    # 设置HTTP请求日志级别
+    org.apache.http: WARN
+
+# Actuator配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

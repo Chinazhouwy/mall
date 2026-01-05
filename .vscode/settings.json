@@ -3,5 +3,6 @@
     "editor.columnSelection": true,
     "editor.definitionLinkOpensInPeek": true,
     "terminal.integrated.mouseWheelZoom": true,
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic"
 }
